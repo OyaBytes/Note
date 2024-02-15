@@ -16,7 +16,12 @@
   "dependencies": {
     "@melt-ui/pp": "^0.3.0",
     "@melt-ui/svelte": "^0.73.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "@tiptap/core": "^2.2.2",
+    "@tiptap/pm": "^2.2.2",
+    "@tiptap/starter-kit": "^2.2.2",
     "autoprefixer": "^10.4.17",
+    "lucide-svelte": "^0.330.0",
     "postcss": "^8.4.35",
     "prosemirror-commands": "^1.5.2",
     "prosemirror-dropcursor": "^1.8.1",

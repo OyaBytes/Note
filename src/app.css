@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ProseMirror {
+  @apply grow ring-0 focus:outline-none overflow-x-hidden;
+}
+
+.hide {
+  @apply hidden;
+}
+
