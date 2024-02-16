@@ -5,7 +5,7 @@
     import TitleRuban from "./TitleRuban.svelte";
 </script>
 
-<div class="flex w-full bg-[#EDF2FA] items-center px-3 shadow-sm rounded-full">
+<div class="flex w-full bg-[#EDF2FA] items-center pt-1 px-3 shadow-sm rounded-full">
     <EditionRuban/>
     <AlignRuban/>
     <InsertRuban/>
