@@ -5,9 +5,10 @@
   import StarterKit from '@tiptap/starter-kit'
   import Underline from '@tiptap/extension-underline';
   import TextAlign from '@tiptap/extension-text-align';
-  import Menubar from "./menu/Menubar.svelte";
-  import TitleBar from "./menu/TitleBar.svelte";
-  import Ruban from "./edition/Ruban.svelte";
+  import { LiteralTab } from './extensions';
+  import Menubar from "./components/Menubar.svelte";
+  import TitleBar from "./components/TitleBar.svelte";
+  import ToolBar from "./components/ToolBar.svelte";
   import { editor_key } from "./utils";
 
 
@@ -25,7 +26,8 @@
       $editor = new Editor({
         element: editor_view,
         extensions: [
-            StarterKit, Underline, TextAlign
+            StarterKit, Underline, TextAlign,
+            LiteralTab,
         ],
         content: '<p>Hello World!</p>',
     });
@@ -39,7 +41,7 @@
     <header class="h-max pb-2 px-4">
         <TitleBar/>
         <Menubar/>
-        <Ruban/>
+        <ToolBar/>
     </header>
     <!-- main container -->
     <div class="flex-1 flex flex-row overflow-y-hidden px-3 pt-3">
