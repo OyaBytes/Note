@@ -5,8 +5,8 @@
         AlignLeft, AlignCenter, AlignRight, AlignJustify, Indent,
         Heading1, Heading2, Heading3, Heading4, Heading5
     } from "lucide-svelte";
-    import Button from "../components/Button.svelte";
-    import FontCombobox from "../components/FontCombobox.svelte";
+    import Button from "./Button.svelte";
+    import FontCombobox from "./FontCombobox.svelte";
     import { getContext } from "svelte";
     import { editor_key } from "../utils";
 
