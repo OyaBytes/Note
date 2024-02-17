@@ -30,7 +30,7 @@
   });
 </script>
 
-<button type="button" class="{cn(default_cls, cls)}" use:melt={$trigger} {...$$restProps}>
+<button type="button" on:click class="{cn(default_cls, cls)}" use:melt={$trigger} {...$$restProps}>
     <slot>
         Button
     </slot>
@@ -43,6 +43,6 @@
     class="{cn(tooltip_class_default, tooltip_class)}"
   >
     <div use:melt={$arrow} />
-    <p class="px-4 py-1 text-sm text-gray-700 max-w-48">{tooltip_text}</p>
+    <p class="px-4 py-1 text-sm text-gray-700 max-w-48 text-center">{tooltip_text}</p>
   </div>
 {/if}

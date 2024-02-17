@@ -1,13 +1,35 @@
 <script>
-    import Editor from "./tiptap/Editor.svelte";
-    import Menubar from "./menu/Menubar.svelte";
-    import TitleBar from "./menu/TitleBar.svelte";
-    import Ruban from "./edition/Ruban.svelte";
+  import { onMount, setContext } from "svelte";
+  import { writable } from "svelte/store";
+  import { Editor } from '@tiptap/core'
+  import StarterKit from '@tiptap/starter-kit'
+  import Underline from '@tiptap/extension-underline';
+  import TextAlign from '@tiptap/extension-text-align';
+  import Menubar from "./menu/Menubar.svelte";
+  import TitleBar from "./menu/TitleBar.svelte";
+  import Ruban from "./edition/Ruban.svelte";
+  import { editor_key } from "./utils";
 
-    let min_size = false;
-    let innerWidth = 0;
 
-    $: min_size = innerWidth < 1000 ? true : false
+  let editor_view = null;
+  let editor = writable(null);
+
+  let min_size = false;
+  let innerWidth = 0;
+
+  $: min_size = innerWidth < 1000 ? true : false
+
+  setContext(editor_key, editor);
+
+  onMount(() => {
+      $editor = new Editor({
+        element: editor_view,
+        extensions: [
+            StarterKit, Underline, TextAlign
+        ],
+        content: '<p>Hello World!</p>',
+    });
+  });
 </script>
 
 <svelte:window bind:innerWidth/>
@@ -22,7 +44,9 @@
     <!-- main container -->
     <div class="flex-1 flex flex-row overflow-y-hidden px-3 pt-3">
       <main class="flex-1 border-x border-gray-200 bg-white max-w-4xl py-8 px-10 overflow-y-auto shadow" class:mx-auto={min_size == true}>
-        <Editor/>
+        <div bind:this={editor_view} class="flex h-full max-w-full prose">
+
+        </div>
       </main>
   
       {#if min_size == false}

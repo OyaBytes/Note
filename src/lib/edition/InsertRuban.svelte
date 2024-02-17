@@ -1,5 +1,6 @@
 <script>
-    import { Image, Table, Link, List, ListOrdered, Quote, SeparatorHorizontal, Code2 } from "lucide-svelte";
+    import { Image, Table, Link, List, ListOrdered, Quote,
+        Video,SeparatorHorizontal, Code2 } from "lucide-svelte";
     import Button from "../button/Button.svelte";
 </script>
 
@@ -16,6 +17,14 @@
             tooltip_text="Insérer une image">
             <Image size="18"/>
         </Button>
+
+
+        <Button
+            class="p-2 rounded"
+            tooltip_text="Insérer une vidéo youtube">
+            <Video size="18"/>
+        </Button>
+
 
         <Button
             class="p-2 rounded"
