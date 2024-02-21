@@ -85,10 +85,25 @@ dependencies:
     version: 3.4.1
 
 devDependencies:
+  '@lukeed/uuid':
+    specifier: ^2.0.1
+    version: 2.0.1
   '@sveltejs/vite-plugin-svelte':
     specifier: ^3.0.2
     version: 3.0.2(svelte@4.2.10)(vite@5.1.1)
+  '@tiptap/extension-character-count':
+    specifier: ^2.2.3
+    version: 2.2.3(@tiptap/core@2.2.2)(@tiptap/pm@2.2.2)
+  '@tiptap/extension-color':
+    specifier: ^2.2.3
+    version: 2.2.3(@tiptap/core@2.2.2)(@tiptap/extension-text-style@2.2.3)
+  '@tiptap/extension-placeholder':
+    specifier: ^2.2.3
+    version: 2.2.3(@tiptap/core@2.2.2)(@tiptap/pm@2.2.2)
   '@tiptap/extension-text-align':
+    specifier: ^2.2.3
+    version: 2.2.3(@tiptap/core@2.2.2)
+  '@tiptap/extension-text-style':
     specifier: ^2.2.3
     version: 2.2.3(@tiptap/core@2.2.2)
   '@tiptap/extension-underline':
@@ -426,6 +441,18 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
+  /@lukeed/csprng@1.1.0:
+    resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
+    engines: {node: '>=8'}
+    dev: true
+
+  /@lukeed/uuid@2.0.1:
+    resolution: {integrity: sha512-qC72D4+CDdjGqJvkFMMEAtancHUQ7/d/tAiHf64z8MopFDmcrtbcJuerDtFceuAfQJ2pDSfCKCtbqoGBNnwg0w==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@lukeed/csprng': 1.1.0
+    dev: true
+
   /@melt-ui/pp@0.3.0(@melt-ui/svelte@0.73.0)(svelte@4.2.10):
     resolution: {integrity: sha512-b07Bdh8l2KcwKVCXOY+SoBw1dk9eWvQfMSi6SoacpRVyVmmfpi0kV4oGt3HYF0tUCB3sEmVicxse50ZzZxEzEA==}
     engines: {pnpm: '>=8.6.3'}
@@ -695,6 +722,16 @@ packages:
       '@tiptap/core': 2.2.2(@tiptap/pm@2.2.2)
     dev: false
 
+  /@tiptap/extension-character-count@2.2.3(@tiptap/core@2.2.2)(@tiptap/pm@2.2.2):
+    resolution: {integrity: sha512-agLFrbeJHPBc5NbjP6Lzq1Rr3UCLBnK3rwH55ynLQZlTIejlLiMJE02js6tTttqHPkgu3qQ/SCcl2AesEKErGA==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.2.2(@tiptap/pm@2.2.2)
+      '@tiptap/pm': 2.2.2
+    dev: true
+
   /@tiptap/extension-code-block@2.2.2(@tiptap/core@2.2.2)(@tiptap/pm@2.2.2):
     resolution: {integrity: sha512-CKn4xqhpCfwkVdkj//A+LVf0hFrRkBbDx8u3KG+I7cegjXxvDSqb2OGhn/tXpFatLAE50GJiPIvqf+TmhIWBvA==}
     peerDependencies:
@@ -712,6 +749,16 @@ packages:
     dependencies:
       '@tiptap/core': 2.2.2(@tiptap/pm@2.2.2)
     dev: false
+
+  /@tiptap/extension-color@2.2.3(@tiptap/core@2.2.2)(@tiptap/extension-text-style@2.2.3):
+    resolution: {integrity: sha512-d9CNqXkv6jWfb7gFxmuRw8+fgh90mbZJIWwLROrUEZj87rZbRggDh24KViR3W++Ha+G4WruoRrMlVsl62SFAVw==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/extension-text-style': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.2.2(@tiptap/pm@2.2.2)
+      '@tiptap/extension-text-style': 2.2.3(@tiptap/core@2.2.2)
+    dev: true
 
   /@tiptap/extension-document@2.2.2(@tiptap/core@2.2.2):
     resolution: {integrity: sha512-eUhpYq8ErVAlxuTg5wslc96mniEQs+VN+tFmRrx9Q0n0nG/aDKUQFDgcSMpAMpHK7+h7tGc/rDq+ydpzZhFXlQ==}
@@ -809,6 +856,16 @@ packages:
       '@tiptap/core': 2.2.2(@tiptap/pm@2.2.2)
     dev: false
 
+  /@tiptap/extension-placeholder@2.2.3(@tiptap/core@2.2.2)(@tiptap/pm@2.2.2):
+    resolution: {integrity: sha512-Kc+9a/uACY9XBT0uB/qFVpIHm8MzVr0uWA7MCjwDcMneANRLsXEBzWBzyHxRFoNRECfocivV9hQIhuO4i09c9A==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.2.2(@tiptap/pm@2.2.2)
+      '@tiptap/pm': 2.2.2
+    dev: true
+
   /@tiptap/extension-strike@2.2.2(@tiptap/core@2.2.2):
     resolution: {integrity: sha512-0wsqiZPatw9QrK3DJ1jCMukenc8DRQtEXo4/dQjtnzNDhe7ZySed6kPpGO9A4lASG7NV7GmYZ/k5iEELr+iE6Q==}
     peerDependencies:
@@ -819,6 +876,14 @@ packages:
 
   /@tiptap/extension-text-align@2.2.3(@tiptap/core@2.2.2):
     resolution: {integrity: sha512-Di/nNTlWsd9LW2NYUg80MkwDnDy9E8H2o2m8Vi/FgvCvDikDr/VD2+AD37SfJMxAjiPFqhJJMyci3vY2Yenv0g==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.2.2(@tiptap/pm@2.2.2)
+    dev: true
+
+  /@tiptap/extension-text-style@2.2.3(@tiptap/core@2.2.2):
+    resolution: {integrity: sha512-23OGAX0GFXY3CBlrsgqgWTw2G6RNPao4O8FV/Ryvo2ckSI58ITOgXQtt6pejk424RAFVolHUKob36VGfC7RRGw==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
     dependencies:

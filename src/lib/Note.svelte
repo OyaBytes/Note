@@ -5,7 +5,10 @@
   import StarterKit from '@tiptap/starter-kit'
   import Underline from '@tiptap/extension-underline';
   import TextAlign from '@tiptap/extension-text-align';
-  import { LiteralTab } from './extensions';
+  import TextStyle from '@tiptap/extension-text-style';
+  import { Color } from '@tiptap/extension-color';
+  import CharacterCount from '@tiptap/extension-character-count'
+  import { LiteralTab, NotePlaceHolder } from './extensions';
   import Menubar from "./components/Menubar.svelte";
   import TitleBar from "./components/TitleBar.svelte";
   import ToolBar from "./components/ToolBar.svelte";
@@ -18,6 +21,8 @@
   let min_size = false;
   let innerWidth = 0;
 
+  let count_words = 0;
+
   $: min_size = innerWidth < 1000 ? true : false
 
   setContext(editor_key, editor);
@@ -27,10 +32,20 @@
         element: editor_view,
         extensions: [
             StarterKit, Underline, TextAlign,
-            LiteralTab,
+            LiteralTab, NotePlaceHolder, CharacterCount,
+            TextStyle, Color,
         ],
         content: '<p>Hello World!</p>',
     });
+
+    $editor.on('create', () => {
+        count_words = $editor.storage.characterCount.words();
+    });
+
+    $editor.on('update', () => {
+        count_words = $editor.storage.characterCount.words();
+    });
+
   });
 </script>
 
@@ -64,5 +79,10 @@
     </div>
     <!-- end main container -->
   
-    <footer class="border-gray-300/400 text-gray-600 p-2 h-10 border-t">Footer</footer>
+    <footer class="border-gray-300/400 text-gray-600 p-2 h-10 border-t flex justify-between">
+        <div>
+          {count_words} mots
+        </div>
+        <p>Copyright 2024 - OyaBytes</p>
+    </footer>
 </div>

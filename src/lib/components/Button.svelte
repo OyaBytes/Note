@@ -5,7 +5,7 @@
 
 
   let default_cls = "inline-flex items-center justify-center rounded-full \
-  text-gray-600 transition-colors hover:bg-white/90 \
+  text-gray-600 transition-colors hover:bg-blue-200/90 \
   focus-visible:ring focus-visible:ring-gray-400 focus-visible:ring-offset-2 p-0 text-sm font-medium";
 
   let cls = "";

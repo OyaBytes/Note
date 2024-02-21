@@ -1,14 +1,17 @@
 <script>
     import { 
-        Bold, AArrowDown, AArrowUp, Undo, Redo, Underline, Strikethrough, Italic,
+        Bold, Palette, Subscript, Superscript, Underline, Strikethrough, Italic, Code,
         Image, Table, Link, List, ListOrdered, Quote, Video, SeparatorHorizontal, Code2,
         AlignLeft, AlignCenter, AlignRight, AlignJustify, Indent,
         Heading1, Heading2, Heading3, Heading4, Heading5
     } from "lucide-svelte";
     import Button from "./Button.svelte";
     import FontCombobox from "./FontCombobox.svelte";
+    import ColorPicker from "./ColorPicker.svelte";
+    import TextSize from "./TextSize.svelte";
     import { getContext } from "svelte";
     import { editor_key } from "../utils";
+    import LinkPopup from "./LinkPopup.svelte";
 
     let editor = getContext(editor_key);
 </script>
@@ -42,31 +45,29 @@
                 tooltip_text="Barrer le texte">
                 <Strikethrough size="18"/>
             </Button>
-    
-            <Button
+
+            <Button on:click={() => $editor.chain().focus().setCode().run()}
                 class="p-2 text-gray-600 rounded"
-                tooltip_text="Diminuer la taille de la police">
-                <AArrowDown size="18"/>
+                tooltip_text="Marquer le texte comme étant du code">
+                <Code size="18"/>
             </Button>
-    
-            <Button
-                class="p-2 rounded"
-                tooltip_text="Augmenter la taille de la police">
-                <AArrowUp size="18"/>
-            </Button>
+
+            <ColorPicker/>
     
             <FontCombobox/>
+
+            <TextSize/>
     
             <Button on:click={() => $editor.chain().focus().undo().run()}
                 class="p-2 rounded"
                 tooltip_text="Annuler les modifications">
-                <Undo size="18"/>
+                <Subscript size="18"/>
             </Button>
     
             <Button on:click={() => $editor.chain().focus().redo().run()}
                 class="p-2 rounded"
                 tooltip_text="Refaire les modifications">
-                <Redo size="18"/>
+                <Superscript size="18"/>
             </Button>
         </div>
     </div>
@@ -108,11 +109,13 @@
     
     <div class="border-r px-2 border-gray-300/400">
         <div class="space-x-2 py-1 text-gray-600">
-            <Button
+            <!-- <Button
                 class="p-2 rounded"
                 tooltip_text="Insérer un lien">
                 <Link size="18"/>
-            </Button>
+            </Button> -->
+
+            <LinkPopup/>
     
             <Button
                 class="p-2 rounded"
@@ -134,25 +137,25 @@
                 <Table size="18"/>
             </Button>
     
-            <Button
+            <Button on:click={() => $editor.chain().focus().toggleBulletList().run()}
                 class="p-2 rounded"
                 tooltip_text="Insérer une liste">
                 <List size="18"/>
             </Button>
     
-            <Button
+            <Button on:click={() => $editor.chain().focus().toggleOrderedList().run()}
                 class="p-2 rounded"
                 tooltip_text="Insérer une liste ordonnée">
                 <ListOrdered size="18"/>
             </Button>
             
-            <Button
+            <Button on:click={() => $editor.chain().focus().toggleBlockquote().run()}
                 class="p-2 rounded"
                 tooltip_text="Insérer une citation">
                 <Quote size="18"/>
             </Button>
     
-            <Button
+            <Button on:click={() => $editor.chain().focus().setHorizontalRule().run()}
                 class="p-2 rounded"
                 tooltip_text="Insérer un séparateur">
                 <SeparatorHorizontal size="18"/>
