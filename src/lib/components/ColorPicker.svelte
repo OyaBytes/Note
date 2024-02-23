@@ -11,6 +11,8 @@
 	export let id = uuid();
 	export let value = '#5E7ABC';
 
+	export let on_select = (value) => {};
+
 	// Our color set
 	let values = [
 		['#DAAFE9', '#C7DBF5', '#AAD5FB', '#ADE5DA', '#B0EDC3', '#FDF0A4', '#F8D6A2'],
@@ -52,9 +54,6 @@
 		ddActive = !ddActive
 
 		await tick();
-		if (ddActive) {
-			//document.querySelector('.color-block.active').focus();
-		}
 	}
 	
 
@@ -65,6 +64,7 @@
 	function changeValue(innerValue) {
 		value = innerValue;
 		ddActive = false;
+		on_select(value);
 	}
 	
 	function keyboardGridNav(e, index) {

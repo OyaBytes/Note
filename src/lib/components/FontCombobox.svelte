@@ -7,76 +7,76 @@
     import { Check, ChevronDown, ChevronUp } from 'lucide-svelte';
     import { fly } from 'svelte/transition';
   
-    type Manga = {
-      author: string;
+    type Font = {
+      font: string;
       title: string;
-      disabled: boolean;
     };
   
-    let mangas: Manga[] = [
+    let fonts: Font[] = [
       {
-        author: 'Kentaro Miura',
-        title: 'Berserk',
-        disabled: false,
+        font: 'helvetica, sans-serif',
+        title: 'Helvetica',
       },
       {
-        author: 'ONE',
-        title: 'Mob Psycho 100',
-        disabled: false,
+        font: 'arial, sans-serif',
+        title: 'Arial',
       },
       {
-        author: 'Hajime Isayama',
-        title: 'Attack on Titan',
-        disabled: false,
+        font: '"arial black", sans-serif',
+        title: 'Arial Black',
       },
       {
-        author: 'Junji Ito',
-        title: 'Uzumaki',
-        disabled: false,
+        font: 'verdana, sans-serif',
+        title: 'Verdana',
       },
       {
-        author: 'Yomi Sarachi',
-        title: 'Steins Gate',
-        disabled: false,
+        font: 'tahoma, sans-serif',
+        title: 'Tahoma',
       },
       {
-        author: 'Tite Kubo',
-        title: 'Bleach',
-        disabled: false,
+        font: 'impact, sans-serif',
+        title: 'Impact',
       },
       {
-        author: 'Masashi Kishimoto',
-        title: 'Naruto',
-        disabled: true,
+        font: 'gil sans, sans-serif',
+        title: 'Gil Sans',
       },
       {
-        author: 'Katsura Hoshino',
-        title: 'D.Gray Man',
-        disabled: false,
+        font: '"times new roman", serif',
+        title: 'Times New Roman',
       },
       {
-        author: 'Tsugumi Ohba',
-        title: 'Death Note',
-        disabled: false,
+        font: 'georgia, serif',
+        title: 'Georgia',
       },
       {
-        author: 'Hiromu Arakawa',
-        title: 'Fullmetal Alchemist',
-        disabled: false,
+        font: 'Palantino, serif',
+        title: 'Palantino',
+      },
+      {
+        font: 'courier, monospace',
+        title: 'Courier',
+      },
+      {
+        font: 'lucida console, monospace',
+        title: 'Palantino',
+      },
+      {
+        font: 'bradley hand, cursive',
+        title: 'Bradley Hand',
       },
     ];
   
-    const toOption = (manga: Manga): ComboboxOptionProps<Manga> => ({
-      value: manga,
-      label: manga.title,
-      disabled: manga.disabled,
+    const toOption = (font: Font): ComboboxOptionProps<Font> => ({
+      value: font,
+      label: font?.title,
     });
   
     const {
       elements: { menu, input, option, label },
       states: { open, inputValue, touchedInput, selected },
       helpers: { isSelected },
-    } = createCombobox<Manga>({
+    } = createCombobox<Font>({
       forceVisible: true,
     });
   
@@ -84,24 +84,24 @@
       $inputValue = $selected?.label ?? '';
     }
   
-    $: filteredMangas = $touchedInput
-      ? mangas.filter(({ title, author }) => {
+    $: filteredFonts = $touchedInput
+      ? fonts.filter(({ title, font }) => {
           const normalizedInput = $inputValue.toLowerCase();
           return (
             title.toLowerCase().includes(normalizedInput) ||
-            author.toLowerCase().includes(normalizedInput)
+            font.toLowerCase().includes(normalizedInput)
           );
         })
-      : mangas;
+      : fonts;
   </script>
   
   <div class="inline-block">
     <div class="relative">
       <input
         use:melt={$input}
-        class="flex h-10 items-center justify-between rounded-
-            px-3 pr-4 text-gray-900 outline-none bg-[#EDF2FA] max-w-40"
-        placeholder="Best book ever"
+        class="flex h-10 items-center justify-between rounded truncate
+            px-3 pr-4 text-gray-900 outline-none border border-[#EDF2FA] focus:bg-[#EDF2FA] max-w-40"
+        placeholder="Fonts"
       />
       <div class="absolute mr-2 right-0 top-1/2 z-10 -translate-y-1/2 text-gray-900">
         {#if $open}
@@ -123,21 +123,21 @@
         class="flex max-h-full flex-col gap-0 overflow-y-auto bg-white text-gray-900"
         tabindex="0"
       >
-        {#each filteredMangas as manga, index (index)}
+        {#each filteredFonts as font, index (index)}
           <li
-            use:melt={$option(toOption(manga))}
+            use:melt={$option(toOption(font))}
             class="relative cursor-pointer scroll-my-2 rounded-md py-2 px-2
           hover:bg-gray-100
           data-[highlighted]:bg-gray-200 data-[highlighted]:text-gray-900
             data-[disabled]:opacity-50"
           >
-            {#if $isSelected(manga)}
+            {#if $isSelected(font)}
               <div class="check absolute left-2 top-1/2 z-10 text-gray-900">
                 <Check class="size-4" />
               </div>
             {/if}
             <div class="pl-4">
-              <span class="text-base">{manga.title}</span>
+              <span class="text-base" style="font-family: {font?.font};">{font?.title}</span>
             </div>
           </li>
         {:else}

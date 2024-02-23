@@ -111,7 +111,7 @@
 </div>
 
 {#if ddActive}
-<div class:top={top} bind:clientHeight={ddHeight} transition:slide class="values-dropdown mt-2 p-1 bg-white text-gray-700" use:clickOutside on:click_outside={clickOutsideDropdown}>
+<div class:top={top} bind:clientHeight={ddHeight} transition:slide class="values-dropdown mt-2 p-1 bg-white text-gray-700 h-[30vh] overflow-y-auto" use:clickOutside on:click_outside={clickOutsideDropdown}>
 	<div class="text-gray-700">
 	{#each values as val, index}
         <button

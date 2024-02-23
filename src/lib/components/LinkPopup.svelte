@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createPopover, melt } from '@melt-ui/svelte';
-    import { fade, slide } from 'svelte/transition';
+    import { slide } from 'svelte/transition';
     import { Link, X } from 'lucide-svelte';
   
     const {
@@ -9,6 +9,8 @@
     } = createPopover({
       forceVisible: true,
     });
+
+    export let on_enter = (value) => {};
   </script>
   
   <button
@@ -30,7 +32,18 @@
       <div use:melt={$arrow} />
       <div class="flex flex-col gap-2.5">
         <label for="link">Insérer le lien</label>
-        <input type="url" id="link" class="input" placeholder="https://example.com" />
+        <input 
+          type="url" 
+          id="link" 
+          class="input" 
+          placeholder="https://example.com"
+          on:keydown={(e) => {
+            if (e.key === "Enter") {
+              on_enter(e.target.value);
+              $open = false;
+            }
+          }}
+        />
         
       </div>
       <button class="close" use:melt={$close}>
