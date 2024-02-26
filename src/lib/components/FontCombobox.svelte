@@ -6,6 +6,8 @@
     } from '@melt-ui/svelte';
     import { Check, ChevronDown, ChevronUp } from 'lucide-svelte';
     import { fly } from 'svelte/transition';
+
+    export let on_select = (value) => {};
   
     type Font = {
       font: string;
@@ -78,6 +80,10 @@
       helpers: { isSelected },
     } = createCombobox<Font>({
       forceVisible: true,
+      onSelectedChange: ({curr, next}) => {
+        on_select(next.value.font);
+        return next;
+      }
     });
   
     $: if (!$open) {
@@ -102,6 +108,7 @@
         class="flex h-10 items-center justify-between rounded truncate
             px-3 pr-4 text-gray-900 outline-none border border-[#EDF2FA] focus:bg-[#EDF2FA] max-w-40"
         placeholder="Fonts"
+        
       />
       <div class="absolute mr-2 right-0 top-1/2 z-10 -translate-y-1/2 text-gray-900">
         {#if $open}

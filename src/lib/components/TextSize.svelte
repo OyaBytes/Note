@@ -9,11 +9,13 @@
 	
 	// Initial value
 	export let id = uuid();
-	export let value = '#5E7ABC';
+	export let value = 12;
+
+	export let on_select = (value) => {};
 
 	// Our color set
 	let values = [
-		11, 12, 13,14,15,16,17,18,20,22,24,28,32,36,40
+		12, 14, 16,18, 20, 24, 28, 32, 36, 40, 44
   ]
 
 	 // Keyboard shortcut
@@ -61,6 +63,7 @@
 
 	function changeValue(innerValue) {
 		value = innerValue;
+		on_select(value + "px");
 		ddActive = false;
 	}
 	
@@ -104,7 +107,7 @@
 <div class="color-picker-inner">
 	<button bind:clientHeight={inputHeight} class="select-color" on:click={(e) => toggleDropdown(e)} class:fake-focus={ddActive}>
 		<div style="display: flex;">
-			<div class="p-1 text-gray-600 relative">11</div>
+			<div class="p-1 text-gray-600 relative">{value}</div>
 			<div class="caret" class:top={top} style="margin-right: .2rem;"></div>
 		</div>
 	</button>
