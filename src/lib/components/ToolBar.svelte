@@ -1,9 +1,7 @@
 <script>
     import { 
-        Bold, Palette, Subscript, Superscript, Underline, Strikethrough, Italic, Code,
-        Image, Table, List, ListOrdered, Quote, Video, SeparatorHorizontal, Code2,
-        AlignLeft, AlignCenter, AlignRight, AlignJustify, Indent, Plus, Menu,
-        Heading1, Heading2, Heading3, Heading4, Heading5
+        Bold, Subscript, Superscript, Underline,
+        Strikethrough, Italic, Code, Plus, Menu,
     } from "lucide-svelte";
     import Button from "./Button.svelte";
     import FontCombobox from "./FontCombobox.svelte";
@@ -11,7 +9,8 @@
     import TextSize from "./TextSize.svelte";
     import { getContext } from "svelte";
     import { editor_key, isMobile } from "../utils";
-    import LinkPopup from "./LinkPopup.svelte";
+
+    export let has_extra_menu = true;
 
     let editor = getContext(editor_key);
 </script>
@@ -30,7 +29,7 @@
                 </Button>
             </div>
         </div>
-        <h1 class="text-2xl text-[#37639B] font-semibold inline-block mr-5">Lokasa</h1>
+        <h1 class="text-2xl text-[#37639B] font-semibold inline-block mr-5">Note</h1>
 
         {#if !$isMobile}
             <div class="border-x pr-2 border-gray-300/400 inline-block">
@@ -85,6 +84,7 @@
                 </div>
             </div>
 
+            {#if has_extra_menu}
             <div class="pr-2 inline-block">
                 <div class="space-x-2 pl-2 text-gray-600">
                     <Button on:click={() => $editor.chain().focus().toggleBold().run()}
@@ -94,6 +94,8 @@
                     </Button>
                 </div>
             </div>
+            {/if}
+            
         {/if}
     </div>
     {/if}

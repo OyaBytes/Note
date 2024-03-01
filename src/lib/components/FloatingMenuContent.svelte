@@ -1,12 +1,5 @@
 <script lang="ts">
     import {
-        Bold,
-        Palette,
-        Subscript,
-        Superscript,
-        Underline,
-        Strikethrough,
-        Italic,
         Code,
         Image,
         Table,
@@ -15,14 +8,6 @@
         Quote,
         Video,
         SeparatorHorizontal,
-        Code2,
-        AlignLeft,
-        AlignCenter,
-        AlignRight,
-        AlignJustify,
-        Indent,
-        Plus,
-        Menu,
         Heading1,
         Heading2,
         Heading3,
@@ -135,7 +120,7 @@
         {
             name: "Table",
             action: () =>
-                editor.chain().focus().setTable({ rows: 3, cols: 3 }).run(),
+                editor.chain().focus().insertTable({ rows: 3, cols: 3 }).run(),
             icon: Table,
             help_text: "Insérer une table",
         },
@@ -156,7 +141,7 @@
 
 
 <div
-    class="pointer-events-auto w-56 rounded-lg bg-white text-[0.8125rem] leading-5 text-gray-700 shadow-xl shadow-black/5 ring-1 ring-slate-700/10"
+    class="pointer-events-auto w-56 bg-white text-[0.8125rem] leading-5 text-gray-700 shadow-xl shadow-black/5 ring-1 ring-slate-700/10"
 >    
     <div class="border-t border-slate-400/20 px-3.5 py-3 overflow-y-auto h-72">
         {#each commands as action}

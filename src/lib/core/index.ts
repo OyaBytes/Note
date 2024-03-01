@@ -1,0 +1,1 @@
+export {NoteBasicSetup} from './noteSchema';

@@ -1,6 +1,6 @@
 import { Extension} from "@tiptap/core";
 
-const LiteralTab = Extension.create({
+export const LiteralTab = Extension.create({
     name: "literalTab",
 
     addKeyboardShortcuts() {
@@ -10,4 +10,4 @@ const LiteralTab = Extension.create({
     },
 });
 
-export default LiteralTab
+export default LiteralTab;

@@ -1,0 +1,1 @@
+export {LiteralTab as default} from './literalTab';

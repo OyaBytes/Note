@@ -1,0 +1,1 @@
+export {NotePlaceHolder as default} from './placeHolder';
